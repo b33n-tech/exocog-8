@@ -1,4 +1,13 @@
-<div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Tâches & Modules</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Dashboard Action</h1>
   <label for="llmSelect">Choisir LLM :</label>
   <select id="llmSelect">
     <option value="https://chat.openai.com/">ChatGPT</option>
@@ -6,11 +15,61 @@
     <option value="https://claude.ai/">Claude</option>
     <option value="https://www.mistral.ai/">Mistral</option>
   </select>
-</div>
+</header>
 
-<div>
-  <textarea id="textInput" rows="10" cols="80" placeholder="Colle ton texte ou JSON ici..."></textarea>
-</div>
+<main>
+  <section id="inputSection">
+    <h2>Ajout de tâches</h2>
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Nouvelle tâche…">
+      <button id="addBtn">Ajouter</button>
+    </div>
+    <ul id="tasksContainer"></ul>
+    <div class="buttons-row">
+      <button id="clearBtn">🧹 Tout nettoyer</button>
+      <button id="archiveBtn">📂 Archiver JSON</button>
+    </div>
 
-<div id="promptsContainer"></div>
-<div id="copiedMsg" style="display:none; color:green;">✅ Prompt copié dans le presse-papier !</div>
+    <h3>Textarea JSON / Input LLM</h3>
+    <textarea id="textInput" rows="10" placeholder="Colle ici le JSON généré par le LLM…"></textarea>
+    <div id="promptsContainer"></div>
+    <div id="copiedMsg">✅ Prompt copié dans le presse-papier !</div>
+  </section>
+
+  <section id="modulesSection">
+    <h2>Modules</h2>
+    <div class="module" id="jalonsModule">
+      <h3>Jalons & Sous-actions</h3>
+      <ul id="jalonsList"></ul>
+    </div>
+
+    <div class="module" id="messagesModule">
+      <h3>Messages / Mails</h3>
+      <table id="messagesTable">
+        <thead>
+          <tr>
+            <th>✓</th><th>Destinataire</th><th>Sujet</th><th>Message</th><th>Note</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div>
+        <select id="mailPromptSelect"></select>
+        <button id="generateMailBtn">Envoyer au LLM</button>
+      </div>
+    </div>
+
+    <div class="module" id="livrablesModule">
+      <h3>Livrables</h3>
+      <ul id="livrablesList"></ul>
+      <div>
+        <select id="livrablePromptSelect"></select>
+        <button id="generateLivrableBtn">Envoyer au LLM</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
