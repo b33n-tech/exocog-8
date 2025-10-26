@@ -18,6 +18,7 @@
 </header>
 
 <main>
+  <!-- Section Input / Prompt -->
   <section id="inputSection">
     <h2>Ajout de tâches</h2>
     <div class="task-input">
@@ -31,18 +32,25 @@
     </div>
 
     <h3>Textarea JSON / Input LLM</h3>
-    <textarea id="textInput" rows="10" placeholder="Colle ici le JSON généré par le LLM…"></textarea>
+    <textarea id="textInput" rows="8" placeholder="Colle ici le JSON généré par le LLM…"></textarea>
+
     <div id="promptsContainer"></div>
     <div id="copiedMsg">✅ Prompt copié dans le presse-papier !</div>
   </section>
 
+  <!-- Section Modules -->
   <section id="modulesSection">
     <h2>Modules</h2>
+
+    <!-- Jalons -->
     <div class="module" id="jalonsModule">
       <h3>Jalons & Sous-actions</h3>
       <ul id="jalonsList"></ul>
+      <select id="jalonsPromptSelect"></select>
+      <button id="generateJalonsBtn">Envoyer au LLM</button>
     </div>
 
+    <!-- Messages / Mails -->
     <div class="module" id="messagesModule">
       <h3>Messages / Mails</h3>
       <table id="messagesTable">
@@ -53,20 +61,18 @@
         </thead>
         <tbody></tbody>
       </table>
-      <div>
-        <select id="mailPromptSelect"></select>
-        <button id="generateMailBtn">Envoyer au LLM</button>
-      </div>
+      <select id="mailPromptSelect"></select>
+      <button id="generateMailBtn">Envoyer au LLM</button>
     </div>
 
+    <!-- Livrables -->
     <div class="module" id="livrablesModule">
       <h3>Livrables</h3>
       <ul id="livrablesList"></ul>
-      <div>
-        <select id="livrablePromptSelect"></select>
-        <button id="generateLivrableBtn">Envoyer au LLM</button>
-      </div>
+      <select id="livrablePromptSelect"></select>
+      <button id="generateLivrableBtn">Envoyer au LLM</button>
     </div>
+
   </section>
 </main>
 
