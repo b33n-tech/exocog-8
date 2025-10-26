@@ -1,40 +1,76 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f0f2f5;
-  margin:0; padding:0; color:#333;
-}
+/* --- Reset et typo moderne --- */
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family: 'Inter', sans-serif; background: #f6f8fa; color:#111; line-height:1.5; }
+h1,h2,h3 { font-weight:600; color:#222; }
+
+/* --- Header --- */
 header {
-  background-color: #4a90e2;
-  color: white;
-  padding: 1rem;
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
+  background: linear-gradient(135deg,#4a90e2,#50e3c2);
+  color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; border-bottom-left-radius:16px; border-bottom-right-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
-header h1 { margin:0; font-size:1.5rem; }
-main {
-  display:flex;
-  flex-wrap:wrap;
-  gap:2rem;
-  padding:2rem;
-}
+header h1 { font-size:1.8rem; }
+header select { padding:0.5rem 1rem; border-radius:8px; border:none; font-weight:600; cursor:pointer; }
+
+/* --- Main layout --- */
+main { display:flex; flex-wrap:wrap; gap:2rem; padding:2rem; justify-content:center; }
+
+/* --- Sections --- */
 section {
-  background-color:white;
-  padding:1rem;
-  border-radius:8px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
-  flex:1 1 400px;
+  background:white; border-radius:16px; padding:1.5rem; flex:1 1 420px; box-shadow:0 4px 16px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;
 }
+section:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.15); }
+
+/* --- Tâches input --- */
 .task-input { display:flex; gap:0.5rem; margin-bottom:1rem; }
-.task-input input { flex:1; padding:0.5rem; border-radius:5px; border:1px solid #ccc; }
-.task-input button { padding:0.5rem 1rem; border:none; background-color:#4a90e2; color:white; border-radius:5px; cursor:pointer; }
-.buttons-row { margin-top:1rem; display:flex; gap:0.5rem; }
-.buttons-row button { flex:1; padding:0.5rem; border:none; border-radius:5px; cursor:pointer; background:#eee; }
+.task-input input { flex:1; padding:0.6rem 1rem; border-radius:12px; border:1px solid #ddd; font-size:1rem; }
+.task-input button { padding:0.6rem 1.5rem; border:none; background:#50e3c2; color:white; border-radius:12px; font-weight:600; cursor:pointer; transition:0.2s; }
+.task-input button:hover { background:#4ac7aa; }
+
+/* --- Buttons Row --- */
+.buttons-row { display:flex; gap:0.5rem; margin-top:1rem; }
+.buttons-row button { flex:1; padding:0.6rem; border:none; border-radius:12px; background:#eee; font-weight:600; cursor:pointer; transition:0.2s; }
+.buttons-row button:hover { background:#ddd; }
+
+/* --- Task list --- */
 ul { list-style:none; padding:0; }
-li.task-item { padding:0.5rem; border-bottom:1px solid #ddd; cursor:pointer; }
-.comment-section { display:flex; flex-direction:column; gap:0.3rem; margin-top:0.3rem; }
-textarea { width:100%; padding:0.5rem; border-radius:5px; border:1px solid #ccc; }
-.module { margin-top:2rem; background:#fafafa; padding:1rem; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.05);}
-table { width:100%; border-collapse:collapse; margin-top:0.5rem; }
-table th, table td { border:1px solid #ddd; padding:0.5rem; text-align:left; }
-button:hover { opacity:0.9; }
+li.task-item {
+  background:#f9f9f9; padding:0.8rem 1rem; margin-bottom:0.5rem; border-radius:12px;
+  display:flex; justify-content:space-between; align-items:center; cursor:pointer; transition:0.2s;
+}
+li.task-item:hover { background:#e6f7ff; transform:translateY(-2px); }
+.comment-section { margin-top:0.5rem; display:flex; gap:0.5rem; }
+.comment-section input { flex:1; padding:0.4rem 0.6rem; border-radius:8px; border:1px solid #ccc; }
+.comment-section button { padding:0.4rem 0.8rem; border:none; border-radius:8px; background:#4a90e2; color:white; cursor:pointer; transition:0.2s; }
+.comment-section button:hover { background:#3a78c2; }
+
+/* --- Textarea JSON --- */
+textarea { width:100%; padding:1rem; border-radius:12px; border:1px solid #ddd; margin-top:1rem; font-family:monospace; resize:vertical; }
+
+/* --- Prompts --- */
+#promptsContainer { margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap; }
+#promptsContainer button { padding:0.6rem 1rem; border:none; border-radius:12px; background:#ff6b6b; color:white; font-weight:600; cursor:pointer; transition:0.2s; }
+#promptsContainer button:hover { background:#e55a5a; }
+
+/* --- Modules --- */
+.module { margin-top:2rem; padding:1rem; background:#f0f4f8; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+.module h3 { margin-bottom:0.8rem; color:#4a90e2; }
+
+/* --- Tableaux modules --- */
+table { width:100%; border-collapse:collapse; border-radius:12px; overflow:hidden; }
+table th, table td { padding:0.6rem; text-align:left; }
+table tbody tr { transition:0.2s; }
+table tbody tr:hover { background:#e6f7ff; }
+input[type=text] { border-radius:8px; border:1px solid #ccc; padding:0.3rem; width:100%; }
+
+/* --- Livrables & Jalons --- */
+#livrablesList li, #jalonsList li {
+  background:white; padding:0.6rem; margin-bottom:0.5rem; border-radius:12px; display:flex; justify-content:space-between; align-items:center;
+  box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:0.2s;
+}
+#livrablesList li:hover, #jalonsList li:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+#livrablesList input[type=text], #jalonsList input[type=text] { margin-left:0.5rem; flex:1; }
+
+/* --- Envoyer LLM Buttons --- */
+button[id^="generate"] { margin-top:0.8rem; background:#ffb400; color:white; font-weight:700; padding:0.6rem 1rem; border:none; border-radius:12px; cursor:pointer; transition:0.2s; }
+button[id^="generate"]:hover { background:#e6a300; }
