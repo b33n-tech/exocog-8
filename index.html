@@ -1,0 +1,16 @@
+<div>
+  <label for="llmSelect">Choisir LLM :</label>
+  <select id="llmSelect">
+    <option value="https://chat.openai.com/">ChatGPT</option>
+    <option value="https://www.perplexity.ai/">Perplexity</option>
+    <option value="https://claude.ai/">Claude</option>
+    <option value="https://www.mistral.ai/">Mistral</option>
+  </select>
+</div>
+
+<div>
+  <textarea id="textInput" rows="10" cols="80" placeholder="Colle ton texte ou JSON ici..."></textarea>
+</div>
+
+<div id="promptsContainer"></div>
+<div id="copiedMsg" style="display:none; color:green;">✅ Prompt copié dans le presse-papier !</div>
