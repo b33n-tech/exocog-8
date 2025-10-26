@@ -1,63 +1,62 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Dashboard Tâches & Modules</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Tâches & Modules</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <header>
-  <h1>Dashboard Action</h1>
-  <label for="llmSelect">Choisir LLM :</label>
+  <h1>Dashboard Action / Modules</h1>
   <select id="llmSelect">
     <option value="https://chat.openai.com/">ChatGPT</option>
-    <option value="https://www.perplexity.ai/">Perplexity</option>
+    <option value="https://perplexity.ai/">Perplexity</option>
+    <option value="https://www.deepl.com/translator">DeepSeek</option>
     <option value="https://claude.ai/">Claude</option>
-    <option value="https://www.mistral.ai/">Mistral</option>
+    <option value="https://mistral.ai/">Mistral</option>
   </select>
 </header>
 
 <main>
-  <!-- Section Input / Prompt -->
-  <section id="inputSection">
-    <h2>Ajout de tâches</h2>
+  <!-- SECTION 1 : INPUT & TÂCHES -->
+  <section id="stack1">
+    <h2>1️⃣ Input des tâches</h2>
     <div class="task-input">
       <input type="text" id="taskInput" placeholder="Nouvelle tâche…">
       <button id="addBtn">Ajouter</button>
     </div>
+
     <ul id="tasksContainer"></ul>
+
     <div class="buttons-row">
       <button id="clearBtn">🧹 Tout nettoyer</button>
       <button id="archiveBtn">📂 Archiver JSON</button>
     </div>
 
-    <h3>Textarea JSON / Input LLM</h3>
-    <textarea id="textInput" rows="8" placeholder="Colle ici le JSON généré par le LLM…"></textarea>
-
+    <textarea id="pasteJson" placeholder="Coller JSON ici pour traitement…"></textarea>
+    
     <div id="promptsContainer"></div>
-    <div id="copiedMsg">✅ Prompt copié dans le presse-papier !</div>
+    <div id="copiedMsg" style="display:none;color:#50e3c2;margin-top:0.5rem;">✅ Copié et LLM ouvert !</div>
   </section>
 
-  <!-- Section Modules -->
-  <section id="modulesSection">
-    <h2>Modules</h2>
+  <!-- SECTION 2 : MODULES -->
+  <section id="stack2">
+    <h2>2️⃣ Modules</h2>
 
     <!-- Jalons -->
-    <div class="module" id="jalonsModule">
+    <div class="module">
       <h3>Jalons & Sous-actions</h3>
       <ul id="jalonsList"></ul>
-      <select id="jalonsPromptSelect"></select>
-      <button id="generateJalonsBtn">Envoyer au LLM</button>
     </div>
 
-    <!-- Messages / Mails -->
-    <div class="module" id="messagesModule">
-      <h3>Messages / Mails</h3>
+    <!-- Messages -->
+    <div class="module">
+      <h3>Mails & Messages</h3>
       <table id="messagesTable">
         <thead>
-          <tr>
-            <th>✓</th><th>Destinataire</th><th>Sujet</th><th>Message</th><th>Note</th>
-          </tr>
+          <tr><th>✔</th><th>Destinataire</th><th>Sujet</th><th>Message</th><th>Commentaire</th></tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -66,13 +65,12 @@
     </div>
 
     <!-- Livrables -->
-    <div class="module" id="livrablesModule">
+    <div class="module">
       <h3>Livrables</h3>
       <ul id="livrablesList"></ul>
       <select id="livrablePromptSelect"></select>
       <button id="generateLivrableBtn">Envoyer au LLM</button>
     </div>
-
   </section>
 </main>
 
